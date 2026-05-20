@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import { Leaf } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
@@ -36,7 +35,49 @@ const Footer = () => {
         .footer-logo {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 7px;
+          text-decoration: none;
+          max-width: 100%;
+        }
+
+        .footer-logo-img-wrap {
+          width: 82px;
+          height: 70px;
+          min-width: 82px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          overflow: visible;
+          flex-shrink: 0;
+        }
+
+        .footer-logo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          filter:
+            brightness(1.12)
+            contrast(1.16)
+            saturate(1.1)
+            drop-shadow(0 5px 10px rgba(0,0,0,0.35));
+          transition: 0.3s ease;
+        }
+
+        .footer-logo:hover .footer-logo-img {
+          transform: scale(1.05);
+        }
+
+        .footer-logo-text {
+          margin-left: -3px;
+          min-width: 0;
         }
 
         .footer-title {
@@ -45,12 +86,14 @@ const Footer = () => {
           font-size: 22px;
           line-height: 1.1;
           color: #fff;
+          white-space: nowrap;
         }
 
         .footer-subtitle {
           display: block;
           font-size: 13px;
           color: rgba(255,255,255,.6);
+          white-space: nowrap;
         }
 
         .footer-quote {
@@ -189,6 +232,18 @@ const Footer = () => {
           color: #fff;
         }
 
+        @media (max-width: 991px) {
+          .footer-logo-img-wrap {
+            width: 76px;
+            height: 66px;
+            min-width: 76px;
+          }
+
+          .footer-title {
+            font-size: 21px;
+          }
+        }
+
         @media (max-width: 767px) {
           .footer-main {
             padding: 60px 24px;
@@ -202,6 +257,44 @@ const Footer = () => {
           .footer-desc {
             max-width: 100%;
           }
+
+          .footer-logo {
+            gap: 5px;
+          }
+
+          .footer-logo-img-wrap {
+            width: 66px;
+            height: 58px;
+            min-width: 66px;
+          }
+
+          .footer-logo-text {
+            margin-left: -2px;
+          }
+
+          .footer-title {
+            font-size: 20px;
+          }
+
+          .footer-subtitle {
+            font-size: 12px;
+          }
+        }
+
+        @media (max-width: 390px) {
+          .footer-logo-img-wrap {
+            width: 58px;
+            height: 52px;
+            min-width: 58px;
+          }
+
+          .footer-title {
+            font-size: 18px;
+          }
+
+          .footer-subtitle {
+            font-size: 11px;
+          }
         }
       `}</style>
 
@@ -211,14 +304,20 @@ const Footer = () => {
             <Row className="g-5">
               <Col md={4}>
                 <div className="footer-brand">
-                  <div className="footer-logo">
-                    <Leaf size={22} color="#fff" />
+                  <Link to="/" className="footer-logo">
+                    <div className="footer-logo-img-wrap">
+                      <img
+                        src="/Images/Logo.png"
+                        alt="EU Gardening Services Logo"
+                        className="footer-logo-img"
+                      />
+                    </div>
 
-                    <div>
+                    <div className="footer-logo-text">
                       <span className="footer-title">EU Gardening</span>
                       <span className="footer-subtitle">Services</span>
                     </div>
-                  </div>
+                  </Link>
 
                   <div>
                     <p className="footer-quote">
@@ -260,12 +359,15 @@ const Footer = () => {
                     💬 +44 7496 786 474
                   </a>
 
-                  <a href="mailto:hello@verdantgardens.co.uk">
+                  <a href="mailto:hello@eugardening.co.uk">
                     ✉️ hello@eugardening.co.uk
                   </a>
 
-                  <p>📍 1341 Ashton old Rd, Openshaw,
-                     Manchester M11 1JT,Uk</p>
+                  <p>
+                    📍 1341 Ashton old Rd, Openshaw,
+                    Manchester M11 1JT, UK
+                  </p>
+
                   <div className="footer-hours">
                     <p>Mon-Fri: 7:30am – 5:30pm</p>
                     <p>Sat: 8:00am – 3:00pm</p>

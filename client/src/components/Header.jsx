@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import { Leaf, Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -46,7 +46,7 @@ export default function Header() {
         .header-inner {
           width: 100%;
           max-width: 1320px;
-          min-height: 82px;
+          min-height: 86px;
           margin: 0 auto;
           padding: 0 28px;
           display: flex;
@@ -58,23 +58,50 @@ export default function Header() {
         .brand-link {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 7px;
           text-decoration: none;
           flex-shrink: 0;
           min-width: 190px;
         }
 
-        .brand-icon {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, #ffffff, #dff7e7);
+        .brand-logo-wrap {
+          width: 82px;
+          height: 70px;
+          min-width: 82px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #17452a;
-          box-shadow: 0 8px 22px rgba(0,0,0,0.22);
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          overflow: visible;
           flex-shrink: 0;
+        }
+
+        .brand-logo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          filter:
+            brightness(1.12)
+            contrast(1.18)
+            saturate(1.1)
+            drop-shadow(0 5px 10px rgba(0,0,0,0.35));
+          transition: 0.3s ease;
+        }
+
+        .brand-link:hover .brand-logo-img {
+          transform: scale(1.05);
+        }
+
+        .brand-text {
+          margin-left: -3px;
+          min-width: 0;
         }
 
         .brand-title {
@@ -226,11 +253,17 @@ export default function Header() {
             font-size: 13px;
             padding: 10px 15px;
           }
+
+          .brand-logo-wrap {
+            width: 76px;
+            height: 66px;
+            min-width: 76px;
+          }
         }
 
         @media (max-width: 991px) {
           .header-inner {
-            min-height: 76px;
+            min-height: 78px;
           }
 
           .desktop-nav,
@@ -244,6 +277,12 @@ export default function Header() {
 
           .brand-link {
             min-width: auto;
+          }
+
+          .brand-logo-wrap {
+            width: 70px;
+            height: 60px;
+            min-width: 70px;
           }
 
           .brand-title {
@@ -326,13 +365,22 @@ export default function Header() {
 
         @media (max-width: 575px) {
           .header-inner {
-            min-height: 70px;
+            min-height: 72px;
             padding: 0 14px;
           }
 
-          .brand-icon {
-            width: 39px;
-            height: 39px;
+          .brand-link {
+            gap: 5px;
+          }
+
+          .brand-logo-wrap {
+            width: 62px;
+            height: 54px;
+            min-width: 62px;
+          }
+
+          .brand-text {
+            margin-left: -2px;
           }
 
           .brand-title {
@@ -351,6 +399,12 @@ export default function Header() {
         }
 
         @media (max-width: 380px) {
+          .brand-logo-wrap {
+            width: 56px;
+            height: 50px;
+            min-width: 56px;
+          }
+
           .brand-title {
             font-size: 18px;
           }
@@ -365,13 +419,17 @@ export default function Header() {
         <Container fluid className="px-0">
           <div className="header-inner">
             <Link to="/" className="brand-link" onClick={() => setOpen(false)}>
-              <div className="brand-icon">
-                <Leaf size={21} />
+              <div className="brand-logo-wrap">
+                <img
+                  src="/Images/Logo.png"
+                  alt="EU Gardening Services Logo"
+                  className="brand-logo-img"
+                />
               </div>
 
-              <div>
+              <div className="brand-text">
                 <div className="brand-title">EU Gardening</div>
-                <div className="brand-subtitle"> Services</div>
+                <div className="brand-subtitle">Services</div>
               </div>
             </Link>
 
